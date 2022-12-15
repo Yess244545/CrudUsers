@@ -5,7 +5,7 @@ import FormUsers from './components/FormUsers'
 import UserCard from './components/UserCard'
 
 
-const BASE_URL= "http://users-crud.academlo.tech/"
+const BASE_URL= "https://users-crud.academlo.tech/"
 
 function App() {
   //estado para almacenar los usuarios y poder mostrarlos
