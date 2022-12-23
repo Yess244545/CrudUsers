@@ -1,9 +1,13 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
+
 
 const UserCard = ({user, deleteUSer,setUserUpadate,handleChangeShowModal}) => {
+
     const handleChangeClickUpdate=()=>{
         setUserUpadate(user)
         handleChangeShowModal()
+        
     }
     const clickdelete=()=>{
       deleteUSer(user.id)

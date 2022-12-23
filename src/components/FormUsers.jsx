@@ -25,6 +25,8 @@ const FormUsers = ({createUser,userUpadate,updateUser,isShowForm,handleChangeSho
     useEffect(() => {
         if(userUpadate){
             reset(userUpadate)
+        }else{
+            reset(defaultValues)
         }
     }, [userUpadate])
 

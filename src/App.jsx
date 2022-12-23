@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import './App.css'
 import FormUsers from './components/FormUsers'
 import UserCard from './components/UserCard'
@@ -12,7 +13,6 @@ function App() {
   const [users, setUsers] = useState()
   const [userUpadate, setUserUpadate] = useState()
   const [isShowForm, setIsShowForm] = useState(true)
-  const [cambiar, setCambiar] = useState(true)
 
 
   //obtener todos los usuarioss
@@ -47,18 +47,25 @@ function App() {
   //Funcion para actualizar usuarios
   const updateUser=(id, data)=>{
     const URL=`${BASE_URL}/users/${id}/`
-    axios.patch(URL,data)
+    axios.patch(URL, data)
       .then(res=>{
         console.log(res.data)
         getAllUsers()
         setUserUpadate()
         handleChangeShowModal()
+        
       })
       .then(err=>console.log(err))
 
   }
   const handleChangeShowModal=()=>{
     setIsShowForm(!isShowForm)
+
+  }
+  
+  const newUsers=()=>{
+    handleChangeShowModal()
+    setUserUpadate() 
   }
    //Se obtiene todos los usuarioa al cargar la pliacacion
   useEffect(() => {
@@ -69,7 +76,7 @@ function App() {
     <div className="App">
       <div className='header_container'>
         <h1 className='title'>Users</h1>
-        <button onClick={handleChangeShowModal} className='header_btn'><i className='bx bx-plus'></i> Create New User</button>
+        <button onClick={newUsers} className='header_btn'><i className='bx bx-plus'></i> Create New User</button>
         
       </div>
         <FormUsers 
